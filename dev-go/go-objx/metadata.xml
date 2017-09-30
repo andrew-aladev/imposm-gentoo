@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrew.aladev@hiqo-solutions.com</email>
+    <name>Andrew Aladev</name>
+  </maintainer>
+  <longdescription>
+    Go package for dealing with maps, slices, JSON and other data.
+  </longdescription>
+</pkgmetadata>
