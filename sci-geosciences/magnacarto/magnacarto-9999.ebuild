@@ -17,6 +17,7 @@ KEYWORDS=""
 IUSE="test"
 
 RDEPEND="
+    dev-go/go-objx
     sci-geosciences/mapnik
     test? ( net-libs/nodejs )
 "
