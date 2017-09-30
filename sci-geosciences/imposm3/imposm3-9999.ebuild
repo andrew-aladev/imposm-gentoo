@@ -4,6 +4,7 @@
 EAPI="6"
 EGO_PN="github.com/omniscale/imposm3"
 EGO_PN_INSTALL="github.com/omniscale/imposm3/cmd/imposm3"
+EGO_BUILD_FLAGS="$EGO_PN_INSTALL"
 
 inherit golang-vcs golang-build
 
@@ -23,15 +24,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-golang-build_src_install() {
-    debug-print-function ${FUNCNAME} "$@"
+rename_function() {
+    local old=$(declare -f $1)
+    local new="$2${old#$1}"
+    eval "$new"
+}
 
-    ego_pn_check
-    set -- env GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
-        go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN_INSTALL}"
-    echo "$@"
-    "$@" || die
-    golang_install_pkgs
+rename_function src_install old_src_install
 
+src_install() {
+    old_src_install "$@"
     dobin bin/*
 }
